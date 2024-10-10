@@ -23,14 +23,13 @@ class OrderAdmin(admin.ModelAdmin):
 
     get_car_model.short_description = 'car_model'
 
-    def total_ammount(self, obj):
-        return obj.total_amount()
-
-    total_ammount.short_description = 'Total Amount'
+    # def total_ammount(self, obj):
+    #     return obj.total_amount()
+    #
+    # total_ammount.short_description = 'Total Amount'
 
 class OrderLineAdmin(admin.ModelAdmin):
-    list_display = ['service', 'order', 'quantity', 'price']
-    readonly_fields = ['total_price']
+    list_display = ['service', 'order', 'quantity', 'total_price']
 
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -49,5 +48,5 @@ class CarModelAdmin(admin.ModelAdmin):
 admin.site.register(Car, CarAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(CarModel, CarModelAdmin)
-admin.site.register(OrderLine, OrderLineAdmin)  # Consider if you want this to be separately editable
+admin.site.register(OrderLine, OrderLineAdmin)
 admin.site.register(Service, ServiceAdmin)

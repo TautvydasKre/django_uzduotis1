@@ -58,6 +58,8 @@ class OrderLine(models.Model):
             return self.service.price * self.quantity
         return 0
 
+    total_price.short_description = 'Summ'
+
     def __str__(self):
         return f"{self.quantity} x {self.service.title} - {self.price}"
 
