@@ -16,10 +16,28 @@ class Car(models.Model):
         verbose_name = 'Car'
         verbose_name_plural = 'Cars'
 
+
+from django.db import models
+
+
 class Order(models.Model):
     """This model defines an order that was made for the car."""
+
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('in_progress', 'In Progress'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+
     date = models.DateField(verbose_name="Data", auto_now_add=True)
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    car = models.ForeignKey('Car', on_delete=models.CASCADE)
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending',
+        verbose_name='Order Status'
+    )
 
     def total_amount(self):
         """Calculate the total sum of all order Lines."""
@@ -27,11 +45,12 @@ class Order(models.Model):
         return sum(line.total_price() for line in order_lines)
 
     def __str__(self):
-        return f"Order for  {self.car} on {self.date}"
+        return f"Order for {self.car} on {self.date} - {self.get_status_display()}"
 
     class Meta:
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
+
 
 class CarModel(models.Model):
     """This model defines car model."""

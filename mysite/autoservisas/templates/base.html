@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Mano Puslapis{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- Header -->
+<div class="p-6 bg-primary text-white text-center header-gradient shadow">
+    <h1>Automobilių Serviso Statistika</h1>
+    <p>Patikima automobilių serviso informacija</p>
+</div>
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <div class="container-fluid">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link active nav-link-custom" href="{% url 'index' %}">PAGRINDINIS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom" href="#">Paslaugos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom" href="#">Kontaktai</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main content area -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="mt-5 p-5 bg-dark text-white text-center footer-custom">
+    <p>© {{ now.year }} Automobilių Servisas | Visos teisės saugomos</p>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

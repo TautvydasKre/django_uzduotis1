@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Mano svetaine{% endblock %}
+
+{% block content %}
+<h1>Siuo metu turime:</h1>
+<ul>
+    <li><strong>Paslaugų skaičius:</strong> {{ num_services }}</li>
+    <li><strong>Užsakymų skaičius:</strong> {{ num_orders }}</li>
+    <li><strong>Automobilių skaičius:</strong> {{ num_cars }}</li>
+</ul>
+{% endblock %}
